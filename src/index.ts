@@ -8,7 +8,7 @@ const app = express();
 
 app.get('/', (req, res) => {
   const content = renderToString(React.createElement(Home));
-
+  console.log('content------', content);
   res.send(content);
 });
 

@@ -1,6 +1,6 @@
-import path from 'path';
+const path = require('path');
 
-export default {
+module.exports = {
   // bundle for node.js
   target: 'node',
   // root file of render server
