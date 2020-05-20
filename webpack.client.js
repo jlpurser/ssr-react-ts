@@ -1,5 +1,4 @@
 const path = require('path');
-// eslint-disable-next-line import/no-extraneous-dependencies
 const merge = require('webpack-merge');
 const baseConfig = require('./webpack.base.js');
 
