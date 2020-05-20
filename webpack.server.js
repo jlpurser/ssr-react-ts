@@ -1,6 +1,7 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const path = require('path');
-// eslint-disable-next-line import/no-extraneous-dependencies
 const merge = require('webpack-merge');
+const webpackNodeExternals = require('webpack-node-externals');
 const baseConfig = require('./webpack.base.js');
 
 const config = {
@@ -17,6 +18,7 @@ const config = {
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
   },
+  externals: [webpackNodeExternals()],
 };
 
 module.exports = merge(baseConfig, config);
