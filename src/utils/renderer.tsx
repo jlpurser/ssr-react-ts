@@ -15,7 +15,7 @@ export default function renderer(req: Request): string {
       </head>
       <body>
         <div id="app">${renderToString(
-          <StaticRouter location={req.path} context={{}}>
+          <StaticRouter location={req.route.path} context={{}}>
             <Routes />
           </StaticRouter>
         )}</div>
