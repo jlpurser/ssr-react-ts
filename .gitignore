@@ -3,6 +3,7 @@
 
 # Build files
 build
+public
 
 # deps
 node_modules
