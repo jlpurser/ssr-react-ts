@@ -1,5 +1,4 @@
 import express from 'express';
-import App from './client/components/App';
 import config from './config';
 import renderer from './utils/renderer';
 
@@ -9,9 +8,9 @@ const app = express();
 app.use(express.static('public'));
 
 // Render React app server side
-app.get('/', (req, res) => {
+app.get('*', (req, res) => {
   // send html document with rendered App
-  res.send(renderer(App));
+  res.send(renderer(req));
 });
 
 app.listen(config.port, () => {
