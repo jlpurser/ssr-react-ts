@@ -1,5 +1,5 @@
 import React from 'react';
 import { hydrate } from 'react-dom';
-import Home from './components/Home';
+import App from './components/App';
 
-hydrate(<Home />, document.querySelector('#app'));
+hydrate(<App />, document.querySelector('#app'));

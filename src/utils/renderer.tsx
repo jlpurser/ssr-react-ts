@@ -11,7 +11,7 @@ export default function renderer(Component: React.ComponentType): string {
         <title>SSR React App</title>
       </head>
       <body>
-        <div id="app">${renderToString(React.createElement(Component))}</div>
+        <div id="app">${renderToString(<Component />)}</div>
         <script async defer src="bundle.js"></script>
       </body>
     </html>
