@@ -25,13 +25,6 @@ export default {
         test: /\.tsx?$/,
         loader: 'ts-loader',
         exclude: /node_modules/,
-        // options: {
-        //   presets: [
-        //     'react',
-        //     'stage-0',
-        //     ['env', { targets: { browsers: ['last 2 versions'] } }],
-        //   ],
-        // },
       },
     ],
   },
