@@ -1,6 +1,9 @@
 const path = require('path');
+// eslint-disable-next-line import/no-extraneous-dependencies
+const merge = require('webpack-merge');
+const baseConfig = require('./webpack.base.js');
 
-module.exports = {
+const config = {
   // bundle for node.js
   target: 'node',
   // root file of render server
@@ -14,14 +17,6 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
   },
-  // run loader on every file
-  module: {
-    rules: [
-      {
-        test: /\.tsx?$/,
-        loader: 'ts-loader',
-        exclude: /node_modules/,
-      },
-    ],
-  },
 };
+
+module.exports = merge(baseConfig, config);

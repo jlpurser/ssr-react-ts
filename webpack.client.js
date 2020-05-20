@@ -1,6 +1,9 @@
 const path = require('path');
+// eslint-disable-next-line import/no-extraneous-dependencies
+const merge = require('webpack-merge');
+const baseConfig = require('./webpack.base.js');
 
-module.exports = {
+const config = {
   // root file of render server
   entry: './src/client/client.tsx',
   // location of build file
@@ -12,14 +15,6 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
   },
-  // run loader on every file
-  module: {
-    rules: [
-      {
-        test: /\.tsx?$/,
-        loader: 'ts-loader',
-        exclude: /node_modules/,
-      },
-    ],
-  },
 };
+
+module.exports = merge(baseConfig, config);
