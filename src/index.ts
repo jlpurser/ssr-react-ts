@@ -7,7 +7,7 @@ import config from './config';
 const app = express();
 
 app.get('/', (req, res) => {
-  const content = renderToString(<Home />);
+  const content = renderToString(React.createElement(Home));
 
   res.send(content);
 });

@@ -13,12 +13,17 @@ module.exports = {
     path: path.resolve(__dirname, 'build'),
   },
 
-  // run babel on every file
+  // resolver for filt paths
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.json'],
+  },
+
+  // run loader on every file
   module: {
     rules: [
       {
-        test: /\.js?$/,
-        loader: 'babel-loader',
+        test: /\.tsx?$/,
+        loader: 'ts-load',
         exclude: /node_modules/,
         options: {
           presets: [
