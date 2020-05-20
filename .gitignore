@@ -1,0 +1,8 @@
+# Environment variables
+.env
+
+# Build files
+build
+
+# deps
+node_modules
