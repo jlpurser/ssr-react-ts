@@ -1,7 +1,10 @@
+import { Request } from 'express';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
+import { StaticRouter } from 'react-router-dom';
+import Routes from '../client/components/Routes';
 
-export default function renderer(Component: React.ComponentType): string {
+export default function renderer(req: Request): string {
   return `
     <!DOCTYPE html>
     <html lang="en">
@@ -11,7 +14,11 @@ export default function renderer(Component: React.ComponentType): string {
         <title>SSR React App</title>
       </head>
       <body>
-        <div id="app">${renderToString(<Component />)}</div>
+        <div id="app">${renderToString(
+          <StaticRouter location={req.path} context={{}}>
+            <Routes />
+          </StaticRouter>
+        )}</div>
         <script async defer src="bundle.js"></script>
       </body>
     </html>
