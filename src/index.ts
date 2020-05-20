@@ -1,7 +1,6 @@
 import express from 'express';
-import Home from './client/components/Home';
+import App from './client/components/App';
 import config from './config';
-import path from 'path';
 import renderer from './utils/renderer';
 
 const app = express();
@@ -12,7 +11,7 @@ app.use(express.static('public'));
 // Render React app server side
 app.get('/', (req, res) => {
   // send html document with rendered App
-  res.send(renderer(Home));
+  res.send(renderer(App));
 });
 
 app.listen(config.port, () => {
