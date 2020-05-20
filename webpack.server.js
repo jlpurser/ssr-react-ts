@@ -18,6 +18,7 @@ const config = {
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
   },
+  // read packages at run time
   externals: [webpackNodeExternals()],
 };
 
