@@ -5,7 +5,7 @@ module.exports = {
   target: 'node',
 
   // root file of render server
-  entry: './src/index.js',
+  entry: './src/index.ts',
 
   // location of build file
   output: {
@@ -23,15 +23,15 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        loader: 'ts-load',
+        loader: 'ts-loader',
         exclude: /node_modules/,
-        options: {
-          presets: [
-            'react',
-            'stage-0',
-            ['env', { targets: { browsers: ['last 2 versions'] } }],
-          ],
-        },
+        // options: {
+        //   presets: [
+        //     'react',
+        //     'stage-0',
+        //     ['env', { targets: { browsers: ['last 2 versions'] } }],
+        //   ],
+        // },
       },
     ],
   },
