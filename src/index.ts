@@ -19,12 +19,10 @@ app.get('/', (req, res) => {
       <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>SSR React App</title>
       </head>
       <body>
-        <div id="app">
-          ${renderToString(React.createElement(Home))}
-        </div>
+        <div id="app">${renderToString(React.createElement(Home))}</div>
         <script async defer src="bundle.js"></script>
       </body>
     </html>

@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   // root file of render server
-  entry: './src/client/client.ts',
+  entry: './src/client/client.tsx',
   // location of build file
   output: {
     filename: 'bundle.js',
