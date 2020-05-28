@@ -1,10 +1,12 @@
 import { Request } from 'express';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
+import { Provider } from 'react-redux';
 import { StaticRouter } from 'react-router-dom';
 import Routes from '../client/components/Routes';
+import { ServerStore } from '../server/state/createServerStore';
 
-export default function renderer(req: Request): string {
+export default function renderer(req: Request, store: ServerStore): string {
   return `
     <!DOCTYPE html>
     <html lang="en">
@@ -15,9 +17,11 @@ export default function renderer(req: Request): string {
       </head>
       <body>
         <div id="app">${renderToString(
-          <StaticRouter location={req.route.path} context={{}}>
-            <Routes />
-          </StaticRouter>
+          <Provider store={store}>
+            <StaticRouter location={req.route.path} context={{}}>
+              <Routes />
+            </StaticRouter>
+          </Provider>
         )}</div>
         <script async defer src="bundle.js"></script>
       </body>

@@ -42,12 +42,14 @@
         "functions": "never",
         "arrays": "only-multiline",
         "objects": "only-multiline",
-        "imports": "never",
+        "imports": "only-multiline",
         "exports": "never"
       }
     ],
     "no-unused-vars": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "no-restricted-globals": "off",
     "indent": "off"
   }
 }
