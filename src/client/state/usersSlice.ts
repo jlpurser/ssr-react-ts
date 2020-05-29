@@ -4,17 +4,20 @@ import {
   PayloadAction,
   ThunkAction,
 } from '@reduxjs/toolkit';
-import { AppState } from './createClientStore';
+import { AppState } from './clientStore';
 
-type Users = string[];
+type User = {
+  id: string;
+  name: string;
+};
 
-const initialState: Users = [];
+const initialState: User[] = [];
 
 const usersSlice = createSlice({
   name: 'users',
   initialState,
   reducers: {
-    receivedUsers: (state, action: PayloadAction<string[]>) => action.payload,
+    receivedUsers: (state, action: PayloadAction<User[]>) => action.payload,
   },
 });
 
