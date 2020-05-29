@@ -24,7 +24,7 @@ const localConfig: Readonly<Config> = {
 function makeConfigGetter(aLocalConfig: Config) {
   return {
     get<T>(prop: ConfigProp): T {
-      if (aLocalConfig[prop] !== undefined) {
+      if (aLocalConfig[prop]) {
         return aLocalConfig[prop];
       }
       throw new Error(`Missing environment variable: ${prop}`);

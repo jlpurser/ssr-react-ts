@@ -1,5 +1,5 @@
 import express from 'express';
-import config from './config';
+import env from './config';
 import createStore from './server/state/createServerStore';
 import renderer from './utils/renderer';
 
@@ -14,8 +14,8 @@ app.get('*', (req, res) => {
   res.send(renderer(req, createStore()));
 });
 
-app.listen(config.get('port'), () => {
-  if (config.get('nodeEnv') !== 'production') {
-    console.log(`Listening on port ${config.get('port')}`);
+app.listen(env.get<number>('port'), () => {
+  if (env.get<string>('nodeEnv') !== 'production') {
+    console.log(`Listening on port ${env.get<number>('port')}`);
   }
 });
