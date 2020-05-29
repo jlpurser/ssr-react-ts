@@ -3,10 +3,10 @@ import { hydrate } from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import Routes from './components/Routes';
-import createStore from './state/createClientStore';
+import store from './state/createClientStore';
 
 hydrate(
-  <Provider store={createStore()}>
+  <Provider store={store}>
     <BrowserRouter>
       <Routes />
     </BrowserRouter>
