@@ -4,7 +4,7 @@ import {
   PayloadAction,
   ThunkAction,
 } from '@reduxjs/toolkit';
-import { ClientStore } from './createClientStore';
+import { AppState } from './createClientStore';
 
 type Users = string[];
 
@@ -22,7 +22,7 @@ export default { reducer: usersSlice.reducer };
 
 const { actions } = usersSlice;
 
-type UsersThunk = ThunkAction<void, ClientStore, undefined, Action<string>>;
+type UsersThunk = ThunkAction<void, AppState, undefined, Action<string>>;
 
 export const fetchUsers = (): UsersThunk => (dispatch) => {
   fetch('http://react-ssr-api.herokuapp.com/users')
