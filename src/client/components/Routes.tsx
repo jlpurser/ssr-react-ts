@@ -1,11 +1,14 @@
-import React from 'react';
-import { Route } from 'react-router-dom';
-import Home from './Home';
+import UsersListContainer from '../containers/UsersListContainer';
+import HomeScreen from '../screens/HomeScreen';
 
-export default function Routes() {
-  return (
-    <>
-      <Route exact path="/" component={Home} />
-    </>
-  );
-}
+export default [
+  {
+    ...HomeScreen,
+    path: '/',
+    exact: true,
+  },
+  {
+    ...UsersListContainer,
+    path: '/users',
+  },
+];
