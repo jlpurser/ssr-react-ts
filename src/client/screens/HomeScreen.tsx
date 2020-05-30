@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function App() {
+function HomeScreen() {
   return (
     <>
       <div>I'm the home component.</div>
@@ -10,3 +10,5 @@ export default function App() {
     </>
   );
 }
+
+export default { component: HomeScreen };
