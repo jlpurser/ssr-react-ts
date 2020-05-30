@@ -1,35 +1,31 @@
 // --------------- Env variables ------------------
 
-/** Add env variable aliases here */
-type ConfigProp = 'port' | 'nodeEnv';
-
 /** Add env variable aliases here with type */
-type Config = Record<ConfigProp, any> & {
+type Config = {
   port: number | undefined;
   nodeEnv: string | undefined;
+  clients: string[] | undefined;
 };
 
 /** Add env variables here */
 const localConfig: Readonly<Config> = {
   port: Number(process.env.PORT),
   nodeEnv: process.env.NODE_ENV,
+  clients: JSON.parse(process.env.CLIENTS || 'undefined'),
 };
 
 // --------------- Access configs ------------------
 /**
- * This shouldn't need to change
+ * This IIFE shouldn't need to change
  *
  * If an env variable is missing, the program should crash
  */
-function makeConfigGetter(aLocalConfig: Config) {
-  return {
-    get<T>(prop: ConfigProp): T {
-      if (aLocalConfig[prop]) {
-        return aLocalConfig[prop];
+export default ((config: Config) =>
+  Object.freeze({
+    get(prop: keyof Config): any {
+      if (config[prop]) {
+        return config[prop];
       }
       throw new Error(`Missing environment variable: ${prop}`);
     },
-  };
-}
-
-export default makeConfigGetter(localConfig);
+  }))(localConfig);
