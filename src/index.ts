@@ -14,8 +14,8 @@ app.get('*', (req, res) => {
   res.send(renderer(req, createStore()));
 });
 
-app.listen(env.get<number>('port'), () => {
-  if (env.get<string>('nodeEnv') !== 'production') {
-    console.log(`Listening on port ${env.get<number>('port')}`);
+app.listen(env.get('port'), () => {
+  if (env.get('nodeEnv') !== 'production') {
+    console.log(`Listening on port ${env.get('port')}`);
   }
 });
