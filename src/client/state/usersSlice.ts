@@ -17,7 +17,7 @@ const usersSlice = createSlice({
   name: 'users',
   initialState,
   reducers: {
-    receivedUsers: (state, action: PayloadAction<User[]>) => action.payload,
+    receivedUsers: (_state, action: PayloadAction<User[]>) => action.payload,
   },
 });
 
@@ -27,10 +27,9 @@ const { actions } = usersSlice;
 
 type UsersThunk = ThunkAction<void, AppState, undefined, Action<string>>;
 
-export const fetchUsers = (): UsersThunk => (dispatch) => {
+export const fetchUsers = (): UsersThunk => (dispatch) =>
   fetch('http://react-ssr-api.herokuapp.com/users')
     .then((data) => data.json())
     .then((users) => {
       dispatch(actions.receivedUsers(users));
     });
-};
