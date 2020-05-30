@@ -4,6 +4,7 @@ import {
   PayloadAction,
   ThunkAction,
 } from '@reduxjs/toolkit';
+import fetch from 'isomorphic-fetch';
 import { AppState } from './clientStore';
 
 type User = {
@@ -27,9 +28,11 @@ const { actions } = usersSlice;
 
 type UsersThunk = ThunkAction<void, AppState, undefined, Action<string>>;
 
-export const fetchUsers = (): UsersThunk => (dispatch) =>
-  fetch('http://react-ssr-api.herokuapp.com/users')
-    .then((data) => data.json())
-    .then((users) => {
-      dispatch(actions.receivedUsers(users));
-    });
+export function fetchUsers(): UsersThunk {
+  return dispatch =>
+    fetch('http://react-ssr-api.herokuapp.com/users')
+      .then(data => data.json())
+      .then(users => {
+        dispatch(actions.receivedUsers(users));
+      });
+}
