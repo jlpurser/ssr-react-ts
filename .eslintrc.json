@@ -48,6 +48,7 @@
     ],
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/no-explicit-any": "off",
+    "implicit-arrow-linebreak": "off",
     "no-restricted-globals": "off",
     "indent": "off"
   }
