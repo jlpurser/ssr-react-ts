@@ -13,9 +13,9 @@ app.use(express.static('public'));
 // Render React app server side
 app.get('*', (req, res) => {
   Promise.all(
-    matchRoutes(Routes, req.path).map(({ route }) =>
-      route.loadData ? route.loadData(store) : null
-    )
+    matchRoutes(Routes, req.path)
+      .map(({ route }) => (route.loadData ? route.loadData(store) : null))
+      .filter(promise => promise)
   ).then(() => {
     // send html document with rendered App
     res.send(renderer(req, store));
