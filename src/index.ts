@@ -1,4 +1,5 @@
 import express from 'express';
+import proxy from 'express-http-proxy';
 import { matchRoutes } from 'react-router-config';
 import Routes from './client/components/Routes';
 import env from './config';
@@ -6,6 +7,18 @@ import store from './server/state/serverStore';
 import renderer from './utils/renderer';
 
 const app = express();
+
+app.use(
+  '/api',
+  proxy('http://react-ssr-api.herokuapp.com', {
+    proxyReqOptDecorator: opts => ({
+      ...opts,
+      header: {
+        'x-forwarded-host': 'localhost:3000',
+      },
+    }),
+  })
+);
 
 // Serve static assets
 app.use(express.static('public'));
