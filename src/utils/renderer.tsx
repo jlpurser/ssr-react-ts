@@ -8,6 +8,12 @@ import serialize from 'serialize-javascript';
 import Routes from '../client/components/Routes';
 import { ServerStore } from '../server/state/serverStore';
 
+/**
+ * Returns HTML string of React app with preloaded store
+ *
+ * @param req Express Request object
+ * @param store Redux Server Store
+ */
 export default function renderer(req: Request, store: ServerStore): string {
   return `
     <!DOCTYPE html>
